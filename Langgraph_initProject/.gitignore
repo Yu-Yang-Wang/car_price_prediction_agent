@@ -1,0 +1,24 @@
+# Environment files and secrets
+.env
+car_analysis/.env
+
+# Python virtual environments
+.langgraphvenv/
+venv/
+ENV/
+
+# Databases / vector stores
+*.db
+*/chroma_db/
+
+# Cache / build artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# OS files
+.DS_Store
+# Data files
+*.csv
+outputs/

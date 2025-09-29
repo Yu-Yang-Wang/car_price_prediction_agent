@@ -1,0 +1,37 @@
+---
+config:
+  flowchart:
+    curve: linear
+---
+graph TD;
+	__start__([<p>__start__</p>]):::first
+	price_research(price_research)
+	price_research_check(price_research_check)
+	price_comparison(price_comparison)
+	deal_scoring(deal_scoring)
+	llm_opinion(llm_opinion)
+	score_check(score_check)
+	save_to_database(save_to_database)
+	generate_report(generate_report)
+	join_scores(join_scores)
+	__end__([<p>__end__</p>]):::last
+	__start__ --> price_research;
+	deal_scoring --> join_scores;
+	join_scores -.-> score_check;
+	llm_opinion --> join_scores;
+	price_comparison --> deal_scoring;
+	price_comparison --> llm_opinion;
+	price_research --> price_research_check;
+	price_research_check -.-> generate_report;
+	price_research_check -.-> price_comparison;
+	price_research_check -.-> price_research;
+	save_to_database --> generate_report;
+	score_check -.-> generate_report;
+	score_check -.-> llm_opinion;
+	score_check -.-> price_research;
+	score_check -.-> save_to_database;
+	generate_report --> __end__;
+	join_scores -.-> join_scores;
+	classDef default fill:#f2f0ff,line-height:1.2
+	classDef first fill-opacity:0
+	classDef last fill:#bfb6fc

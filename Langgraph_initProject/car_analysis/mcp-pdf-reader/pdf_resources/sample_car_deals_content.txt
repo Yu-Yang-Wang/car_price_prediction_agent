@@ -1,0 +1,50 @@
+
+Car Purchase Analysis Report
+Date: September 2025
+
+Vehicle Purchase Summary:
+
+Car 1: 2020 Toyota Camry
+- Purchase Price: $22,500
+- Mileage at Purchase: 35,000 miles
+- Purchase Date: August 2025
+- Condition: Excellent
+- Features: Hybrid, Leather seats, Navigation
+
+Car 2: 2019 Honda Civic
+- Purchase Price: $18,200
+- Mileage at Purchase: 42,000 miles
+- Purchase Date: July 2025
+- Condition: Good
+- Features: Manual transmission, Sunroof
+
+Car 3: 2021 Ford F-150
+- Purchase Price: $31,800
+- Mileage at Purchase: 28,000 miles
+- Purchase Date: September 2025
+- Condition: Very Good
+- Features: 4WD, Extended cab, Towing package
+
+Car 4: 2018 BMW 3 Series
+- Purchase Price: $26,900
+- Mileage at Purchase: 55,000 miles
+- Purchase Date: June 2025
+- Condition: Good
+- Features: AWD, Premium package, Heated seats
+
+Car 5: 2022 Tesla Model 3
+- Purchase Price: $38,500
+- Mileage at Purchase: 15,000 miles
+- Purchase Date: August 2025
+- Condition: Excellent
+- Features: Autopilot, Premium interior, Supercharging
+
+Total Investment: $137,900
+Average Price per Vehicle: $27,580
+Average Mileage: 35,000 miles
+
+Analysis Notes:
+- All vehicles purchased from reputable dealers
+- Comprehensive inspections completed
+- Market research conducted for each purchase
+- Financing terms negotiated separately

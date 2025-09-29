@@ -1,0 +1,83 @@
+---
+config:
+  flowchart:
+    curve: linear
+---
+flowchart TD
+  %% Multi-Agent Car Analysis Architecture (Financial-project style)
+
+  %% Inputs
+  A["PDF/Manual Input\n(car listings)"] --> B["Preprocess\nPDF Extractor"]
+  B --> S{Agent Orchestrator\n(LangGraph / ReAct)}
+
+  %% Agents
+  subgraph Agents
+    direction TB
+    AG1["Condition Agent\n- parse make/model/year/mileage\n- detect accidents/notes (TODO)"]
+    AG2["Market Price Agent\n- web search (Tavily)\n- filter domains & outliers\n- compute median"]
+    AG3["Residual Value Agent\n- ML predictor (tool)\n- depreciation forecast"]
+    AG4["News/Policy Agent\n- recalls / fuel price / policies\n- macro signals"]
+    AG5["Vector RAG Agent\n- similar cases via Chroma\n- knowledge base lookup\n- Graph subgraph context (Neo4j)"]
+    AG6["Summary Agent\n- merge all findings\n- structured report (Markdown)\n- final verdict & price band"]
+  end
+
+  %% Routing
+  S --> AG1
+  S --> AG2
+  S --> AG3
+  S --> AG4
+  S --> AG5
+  AG1 --> AG6
+  AG2 --> AG6
+  AG3 --> AG6
+  AG4 --> AG6
+  AG5 --> AG6
+
+  %% State
+  subgraph State
+    direction TB
+    ST["AgentState\n- car: {make, model, year, mileage, price_paid}\n- price_research\n- price_comparison\n- residual_value\n- news_signals\n- rag_context {vector, graph}\n- scores {rule, llm}\n- retries, dbg_logs, errors"]
+  end
+  S <-->|read/write| ST
+  AG1 -->|update| ST
+  AG2 -->|update| ST
+  AG3 -->|update| ST
+  AG4 -->|update| ST
+  AG5 -->|update| ST
+  AG6 -->|finalize| ST
+
+  %% Tools (MCP/External)
+  subgraph Tools
+    direction TB
+    T1["tavily search"]
+    T2["vector_search\nChroma"]
+    T3["ml_predictor\n(resale model)"]
+    T4["graph_query\nNeo4j/Cypher"]
+  end
+  AG2 -.-> T1
+  AG5 -.-> T2
+  AG3 -.-> T3
+  AG5 -.-> T4
+
+  %% Data Stores
+  subgraph Stores
+    direction TB
+    D1[("SQLite\nCars & Analyses")]
+    D2[("Chroma\nVectors: cars/analyses/knowledge")]
+    D3[("Neo4j\nCar-Analysis graph")]
+    D4[("Files\nReports/Exports")]
+  end
+
+  AG6 -->|save| D1
+  AG6 -->|sync embeddings| D2
+  AG6 -->|upsert nodes/edges| D3
+  AG6 -->|write .md/.json| D4
+
+  %% Outputs
+  OUT["Markdown Report\n+ JSON export"]
+  D4 --> OUT
+
+  classDef default fill:#f2f0ff,line-height:1.2
+  classDef store fill:#e3f7ff,stroke:#1e90ff
+  class D1,D2,D3,D4 store
+

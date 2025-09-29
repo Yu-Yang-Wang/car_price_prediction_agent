@@ -1,0 +1,16 @@
+fastmcp>=0.3
+mcp>=1.2
+langgraph>=0.2
+langchain-core>=0.2
+langchain-openai>=0.2
+langchain-huggingface>=0.1  # optional: fallback embeddings
+sqlalchemy>=2.0
+mcp>=0.1.0
+pdfplumber>=0.11.0
+pymupdf>=1.24.9
+chromadb>=0.5.3    # 若要用 Chroma，按需
+faiss-cpu>=1.8.0   # 若要用 FAISS，按需
+pillow
+pytesseract
+scikit-learn>=1.3
+joblib>=1.3

@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python test_modular_analysis.py:*)",
+      "Bash(rm:*)",
+      "Bash(pip install:*)",
+      "Bash(python:*)",
+      "Bash(source:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
